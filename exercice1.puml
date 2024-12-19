@@ -1,22 +1,22 @@
 @startuml
-actor Client
+actor client
 participant "Guichet Automatique" as ATM
 participant "Système Bancaire" as Bank
 
-Client -> ATM : Insère la carte
-ATM -> Client : Demande code PIN
-Client -> ATM : Entrez code PIN
-ATM -> Bank : Vérifie le code PIN
-Bank -> ATM : Code PIN correct
-ATM -> Client : Demande montant
-Client -> ATM : Entrez le montant
-ATM -> Bank : Vérifie le solde
+client -> ATM : insere la carte
+ATM -> Client : demande code (password)pin
+client -> ATM : Entrez code (password)pin
+ATM -> Bank : Verifie le code (password)pin
+Bank -> ATM : Code (password)pin correct
+ATM -> Client : demande montant
+client -> ATM : Entrez le montant
+ATM -> Bank : Verifie le solde
 alt Solde suffisant
     Bank -> ATM : Solde disponible
-    ATM -> Client : Distribue les billets
-    ATM -> Client : Imprime le reçu
+    ATM -> client : Distribue les billets
+    ATM -> client : Imprime le reçu
 else Solde insuffisant
     Bank -> ATM : Solde insuffisant
-    ATM -> Client : Message d'erreur
+    ATM -> client : Message d'erreur
 end
 @enduml
