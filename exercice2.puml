@@ -1,0 +1,27 @@
+@startuml
+class Client {
+    - id: int
+    - nom: string
+    - adresse: string
+    + getDetails(): string
+}
+
+class CompteBancaire {
+    - numeroCompte: string
+    - solde: float
+    + créditer(montant: float)
+    + débiter(montant: float)
+    + getSolde(): float
+}
+
+class Transaction {
+    - id: int
+    - type: string
+    - montant: float
+    - date: Date
+    + effectuerTransaction(): bool
+}
+
+Client "1" -- "0..*" CompteBancaire : possède >
+CompteBancaire "1" -- "0..*" Transaction : génère >
+@enduml
